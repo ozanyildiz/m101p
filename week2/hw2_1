@@ -1,0 +1,4 @@
+db.grades.find({'score': {$gte : 65}}).sort({'score': 1}).limit(1)
+
+I think findOne works, too. But "limit" is way cooler.
+
