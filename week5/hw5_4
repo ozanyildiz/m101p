@@ -1,0 +1,2 @@
+> db.zips.aggregate([{$project: {first_char: {$substr: ["$city", 0, 1]}, population: "$pop"}}, {$match: {first_char: /^[0-9]/}}, {$group: { _id: "1", rural: {"$sum":"$population"}}}])
+
