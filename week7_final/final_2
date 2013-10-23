@@ -1,0 +1,3 @@
+> db.enron.aggregate([{$unwind: "$headers.To"}, {$group: {_id: {id: "$_id", from: "$headers.From"}, to: {$addToSet: "$headers.To"}}}, {$unwind: "$to"}, {$group: {_id: {from: "$_id.from", to: "$to"}, times: {$sum: 1}}}, {$sort: {times: -1}}, {$limit: 1} ])
+
+"$_id" is used to distinguish the e-mails. Without it, all sender - receiver pairs would be unique.
